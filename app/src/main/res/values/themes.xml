@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Tema base de la app -->
+    <style name="Theme.RegistroHorasApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Color primario principal -->
+        <item name="colorPrimary">@color/rojoCarrefour</item>
+        <!-- Variante para estados más oscuros (botones presionados, etc.) -->
+        <item name="colorPrimaryVariant">@color/azulCarrefour</item>
+        <!-- Color del texto/iconos sobre colorPrimary -->
+        <item name="colorOnPrimary">@android:color/white</item>
+        <!-- Color secundario para elementos de acento -->
+        <item name="colorSecondary">@color/rojoCarrefour</item>
+        <!-- Fondo de la ventana -->
+        <item name="android:windowBackground">@color/white</item>
+        <!-- Color del texto principal (sobre fondo blanco) -->
+        <item name="android:textColorPrimary">@color/black</item>
+        <!-- Color para botones y controles secundarios -->
+        <item name="colorSecondaryVariant">@color/pastel</item>
+    </style>
+
+</resources>

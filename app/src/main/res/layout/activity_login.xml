@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <!-- Logo Carrefour centrado arriba -->
+    <ImageView
+        android:id="@+id/logoCarrefourLogin"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="Logo Carrefour"
+        android:src="@drawable/logo_carrefour"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/etUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"/>
+
+    <!-- Usuario -->
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Usuario"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/logoCarrefourLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Contraseña -->
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/etUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- Botón Login -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="Iniciar sesión"
+        android:backgroundTint="@color/rojoCarrefour"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/etContrasena"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

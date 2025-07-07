@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color> <!-- Blanco explícito -->
+    <color name="pastel">#B9F6CA</color>
+    <color name="azulCarrefour">#0070BA</color> <!-- Color institucional Carrefour -->
+    <color name="rojoCarrefour">#E30613</color>
+
+    <!-- Opcionales para textos y estados -->
+    <color name="grayLight">#D3D3D3</color>
+    <color name="grayDark">#616161</color>
+    <color name="errorColor">#B00020</color>
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:title="Contador de horas"
+        app:titleTextColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Logo Carrefour centrado debajo de la Toolbar -->
+    <ImageView
+        android:id="@+id/logoCarrefour"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="logo carrefour"
+        android:src="@drawable/logo_carrefour"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- EditText para Fecha -->
+    <EditText
+        android:id="@+id/etFecha"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text_background"
+        android:focusable="false"
+        android:hint="Seleccioná la fecha (AAAA-MM-DD)"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@id/logoCarrefour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <!-- EditText para Horas -->
+    <EditText
+        android:id="@+id/etHoras"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Ingresá las horas trabajadas"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/etFecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <!-- Botón Guardar -->
+    <Button
+        android:id="@+id/btnEnviar"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="Guardar"
+        android:backgroundTint="@color/rojoCarrefour"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/etHoras"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <!-- Botón Ver registros -->
+    <Button
+        android:id="@+id/btnVerRegistros"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="Ver registros guardados"
+        android:backgroundTint="@color/rojoCarrefour"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/btnEnviar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
