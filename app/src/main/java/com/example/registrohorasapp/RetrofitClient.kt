@@ -18,17 +18,23 @@ object RetrofitClient {
         tokenManager = TokenManager(context)
     }
 
+    // Interceptor para agregar el token
     private val authInterceptor = Interceptor { chain ->
         val originalRequest = chain.request()
-        val token = tokenManager?.getToken()
+        val originalUrl = originalRequest.url.toString()
 
-        val requestBuilder = originalRequest.newBuilder()
-        if (!token.isNullOrEmpty()) {
-            requestBuilder.addHeader("Authorization", "Token $token")
+        // Si la URL contiene 'register' o 'api-token-auth', no mandamos el token
+        if (originalUrl.contains("register") || originalUrl.contains("api-token-auth")) {
+            chain.proceed(originalRequest)
+        } else {
+            val token = tokenManager?.getToken()
+            val requestBuilder = originalRequest.newBuilder()
+            if (!token.isNullOrEmpty()) {
+                requestBuilder.addHeader("Authorization", "Token $token")
+            }
+            val newRequest = requestBuilder.build()
+            chain.proceed(newRequest)
         }
-
-        val newRequest = requestBuilder.build()
-        chain.proceed(newRequest)
     }
 
     private val client = OkHttpClient.Builder()
