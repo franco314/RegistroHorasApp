@@ -19,9 +19,11 @@ class ConfigurarFrancoActivity : ComponentActivity() {
         val rbOtro = findViewById<RadioButton>(R.id.rbOtro)
         val btnGuardar = findViewById<Button>(R.id.btnGuardarFranco)
 
+        // Cargar configuración actual
         val prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         val francoActual = prefs.getString("franco", "Domingo")
 
+        // Establecer selección actual
         if (francoActual == "Domingo") {
             rbDomingo.isChecked = true
         } else {
@@ -29,13 +31,23 @@ class ConfigurarFrancoActivity : ComponentActivity() {
         }
 
         btnGuardar.setOnClickListener {
-            val editor = prefs.edit()
-            val seleccionado = if (rbDomingo.isChecked) "Domingo" else "Otro"
-            editor.putString("franco", seleccionado)
-            editor.apply()
+            try {
+                // Validar que se haya seleccionado una opción
+                if (!rbDomingo.isChecked && !rbOtro.isChecked) {
+                    Toast.makeText(this, "Seleccioná una opción", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
 
-            Toast.makeText(this, "Franco guardado: $seleccionado", Toast.LENGTH_SHORT).show()
-            finish()
+                val editor = prefs.edit()
+                val seleccionado = if (rbDomingo.isChecked) "Domingo" else "Otro"
+                editor.putString("franco", seleccionado)
+                editor.apply()
+
+                Toast.makeText(this, "Franco guardado: $seleccionado", Toast.LENGTH_SHORT).show()
+                finish()
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error al guardar: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

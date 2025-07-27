@@ -10,4 +10,8 @@
     <color name="grayLight">#D3D3D3</color>
     <color name="grayDark">#616161</color>
     <color name="errorColor">#B00020</color>
+    
+    <!-- Colores para modo oscuro -->
+    <color name="darkBackground">#FF121212</color> <!-- Fondo oscuro -->
+    <color name="lightGray">#B3FFFFFF</color> <!-- Gris claro para hints en modo oscuro -->
 </resources>

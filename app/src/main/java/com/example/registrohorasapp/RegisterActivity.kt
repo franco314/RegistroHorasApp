@@ -16,6 +16,7 @@ class RegisterActivity : ComponentActivity() {
 
     private lateinit var etNuevoUsuario: EditText
     private lateinit var etNuevaContrasena: EditText
+    private lateinit var etRepetirContrasena: EditText
     private lateinit var btnRegistrar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,20 +27,34 @@ class RegisterActivity : ComponentActivity() {
 
         etNuevoUsuario = findViewById(R.id.etNuevoUsuario)
         etNuevaContrasena = findViewById(R.id.etNuevaContrasena)
+        etRepetirContrasena = findViewById(R.id.etRepetirContrasena)
         btnRegistrar = findViewById(R.id.btnRegistrar)
 
         btnRegistrar.setOnClickListener {
-            val usuario = etNuevoUsuario.text.toString()
+            val usuario = etNuevoUsuario.text.toString().trim()
             val contrasena = etNuevaContrasena.text.toString()
+            val repetirContrasena = etRepetirContrasena.text.toString()
 
-            if (usuario.isEmpty() || contrasena.isEmpty()) {
-                Toast.makeText(this, "Completá usuario y contraseña", Toast.LENGTH_SHORT).show()
+            // Validaciones
+            if (usuario.isEmpty() || contrasena.isEmpty() || repetirContrasena.isEmpty()) {
+                Toast.makeText(this, "Completá todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (contrasena != repetirContrasena) {
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                etRepetirContrasena.setText("")
+                etRepetirContrasena.requestFocus()
+                return@setOnClickListener
+            }
+
+            if (contrasena.length < 6) {
+                Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    // Aquí pasamos los parámetros separados, no un Map
                     val response = RetrofitClient.apiService.register(usuario, contrasena)
 
                     withContext(Dispatchers.Main) {

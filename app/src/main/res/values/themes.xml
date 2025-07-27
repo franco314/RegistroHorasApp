@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Tema base de la app -->
-    <style name="Theme.RegistroHorasApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Tema base de la app - SIEMPRE modo claro -->
+    <style name="Theme.RegistroHorasApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Color primario principal -->
         <item name="colorPrimary">@color/rojoCarrefour</item>
         <!-- Variante para estados más oscuros (botones presionados, etc.) -->
@@ -16,6 +16,8 @@
         <item name="android:textColorPrimary">@color/black</item>
         <!-- Color para botones y controles secundarios -->
         <item name="colorSecondaryVariant">@color/pastel</item>
+        <!-- Color de hint para EditText -->
+        <item name="android:textColorHint">@color/grayDark</item>
     </style>
 
 </resources>

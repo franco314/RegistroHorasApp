@@ -21,6 +21,7 @@ import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.TemporalAdjusters
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,18 +55,32 @@ class MainActivity : AppCompatActivity() {
         btnVerRegistros = findViewById(R.id.btnVerRegistros)
 
         etFecha.setOnClickListener {
-            val hoy = LocalDate.now()
-            val year = hoy.year
-            val month = hoy.monthValue - 1
-            val day = hoy.dayOfMonth
+            try {
+                val calendar = Calendar.getInstance()
+                val year = calendar.get(Calendar.YEAR)
+                val month = calendar.get(Calendar.MONTH)
+                val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-            val dpd = DatePickerDialog(this, { _, y, m, d ->
-                val mesFormateado = String.format("%02d", m + 1)
-                val diaFormateado = String.format("%02d", d)
-                etFecha.setText("$y-$mesFormateado-$diaFormateado")
-            }, year, month, day)
-
-            dpd.show()
+                val dpd = DatePickerDialog(
+                    this,
+                    { _, selectedYear, selectedMonth, selectedDay ->
+                        try {
+                            val mesFormateado = String.format("%02d", selectedMonth + 1)
+                            val diaFormateado = String.format("%02d", selectedDay)
+                            etFecha.setText("$selectedYear-$mesFormateado-$diaFormateado")
+                        } catch (e: Exception) {
+                            Toast.makeText(this, "Error al formatear fecha: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    },
+                    year,
+                    month,
+                    day
+                )
+                
+                dpd.show()
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error al abrir selector de fecha: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnEnviar.setOnClickListener {
@@ -172,8 +187,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
-
-
             R.id.action_logout -> {
                 TokenManager(this).clearToken()
                 startActivity(Intent(this, LoginActivity::class.java))

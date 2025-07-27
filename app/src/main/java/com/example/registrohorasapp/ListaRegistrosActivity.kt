@@ -1,6 +1,7 @@
 package com.example.registrohorasapp
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -17,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.widget.EditText
+import java.util.Calendar
 
 
 class ListaRegistrosActivity : ComponentActivity() {
@@ -76,6 +78,43 @@ class ListaRegistrosActivity : ComponentActivity() {
 
         etFecha.setText(registro.fecha)
         etHoras.setText(registro.horas.toString())
+
+        // Agregar DatePickerDialog al EditText de fecha
+        etFecha.setOnClickListener {
+            try {
+                val fechaActual = registro.fecha
+                val partes = fechaActual.split("-")
+                
+                if (partes.size != 3) {
+                    Toast.makeText(this, "Formato de fecha inválido", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                
+                val year = partes[0].toInt()
+                val month = partes[1].toInt() - 1
+                val day = partes[2].toInt()
+
+                val dpd = DatePickerDialog(
+                    this,
+                    { _, selectedYear, selectedMonth, selectedDay ->
+                        try {
+                            val mesFormateado = String.format("%02d", selectedMonth + 1)
+                            val diaFormateado = String.format("%02d", selectedDay)
+                            etFecha.setText("$selectedYear-$mesFormateado-$diaFormateado")
+                        } catch (e: Exception) {
+                            Toast.makeText(this, "Error al formatear fecha: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    },
+                    year,
+                    month,
+                    day
+                )
+                
+                dpd.show()
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error al abrir selector de fecha: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         AlertDialog.Builder(this)
             .setTitle("Editar Registro")

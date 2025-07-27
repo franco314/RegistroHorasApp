@@ -9,7 +9,8 @@
     <EditText
         android:id="@+id/etFecha"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text_background"
         android:focusable="false"
         android:clickable="true"
         android:hint="Fecha (AAAA-MM-DD)"
@@ -18,7 +19,8 @@
     <EditText
         android:id="@+id/etHoras"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text_background"
         android:hint="Horas trabajadas"
         android:inputType="numberDecimal"
         android:layout_marginTop="12dp" />
