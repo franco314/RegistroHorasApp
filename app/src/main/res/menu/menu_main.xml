@@ -2,13 +2,17 @@
 
     <item
         android:id="@+id/action_configurar_franco"
+        android:icon="@drawable/ic_time_tracker"
         android:title="Configurar franco"
-        android:orderInCategory="1" />
+        android:orderInCategory="1"
+        android:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_ver_horas_acumuladas"
+        android:icon="@drawable/ic_hours_accumulation"
         android:title="Ver horas acumuladas"
-        android:orderInCategory="2" />
+        android:orderInCategory="2"
+        android:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_logout"

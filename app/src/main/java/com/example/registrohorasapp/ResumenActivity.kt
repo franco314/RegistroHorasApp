@@ -30,9 +30,9 @@ class ResumenActivity : ComponentActivity() {
         val extraMes = intent.getDoubleExtra(EXTRA_EXTRA_MES, 0.0)
 
         tvHorasSemana.text = "Horas trabajadas en la semana: %.1f hs".format(totalSemana)
-        tvHorasExtraSemana.text = "Horas extras esta semana: %.1f hs".format(extraSemana)
+        tvHorasExtraSemana.text = "🕐 Horas extras esta semana: %.1f hs".format(extraSemana)
         tvTotalHoras.text = "Horas trabajadas en el mes: %.1f hs".format(totalMes)
-        tvHorasExtras.text = "Horas extras este mes: %.1f hs".format(extraMes)
+        tvHorasExtras.text = "🕐 Horas extras este mes: %.1f hs".format(extraMes)
 
         btnCerrar.setOnClickListener {
             finish()

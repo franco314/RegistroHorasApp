@@ -1,0 +1,48 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    
+    <!-- Contenedor principal -->
+    <path
+        android:fillColor="@color/background_secondary"
+        android:pathData="M4,4 L20,4 L20,20 L4,20 Z"/>
+    
+    <!-- Barras de acumulación -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M6,16 L8,16 L8,18 L6,18 Z"/>
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M6,13 L10,13 L10,15 L6,15 Z"/>
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M6,10 L12,10 L12,12 L6,12 Z"/>
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M6,7 L14,7 L14,9 L6,9 Z"/>
+    
+    <!-- Reloj pequeño -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M16,6m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"/>
+    
+    <!-- Agujas del reloj -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M16,6 L16,5 L16.2,5 L16.2,6 Z"/>
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M16,6 L17,6 L17,6.2 L16,6.2 Z"/>
+    
+    <!-- Centro del reloj -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M16,6m-0.1,0a0.1,0.1 0,1 1,0.2 0a0.1,0.1 0,1 1,-0.2 0"/>
+    
+    <!-- Flecha de crecimiento -->
+    <path
+        android:fillColor="@color/accent_secondary"
+        android:pathData="M18,14 L19,13 L20,14 L19.5,14 L19.5,16 L18.5,16 L18.5,14 Z"/>
+</vector> 

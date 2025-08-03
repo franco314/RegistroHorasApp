@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etHoras: EditText
     private lateinit var btnEnviar: Button
     private lateinit var btnVerRegistros: Button
+    private lateinit var btnResumenExtras: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         etHoras = findViewById(R.id.etHoras)
         btnEnviar = findViewById(R.id.btnEnviar)
         btnVerRegistros = findViewById(R.id.btnVerRegistros)
+        btnResumenExtras = findViewById(R.id.btnResumenExtras)
 
         etFecha.setOnClickListener {
             try {
@@ -98,6 +100,12 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Validar que las horas sean razonables
+            if (horas <= 0 || horas > 24) {
+                Toast.makeText(this, "Las horas deben estar entre 0 y 24", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val registro = RegistroRequest(fecha, horas)
 
             CoroutineScope(Dispatchers.IO).launch {
@@ -133,7 +141,16 @@ class MainActivity : AppCompatActivity() {
                     }
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(this@MainActivity, "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                        val errorMessage = when {
+                            e.message?.contains("Failed to connect") == true -> 
+                                "Error de conexión. Verifica tu conexión a internet."
+                            e.message?.contains("timeout") == true -> 
+                                "Tiempo de espera agotado. Intenta nuevamente."
+                            e.message?.contains("Unable to resolve host") == true -> 
+                                "No se puede conectar al servidor. Verifica la configuración."
+                            else -> "Error: ${e.localizedMessage}"
+                        }
+                        Toast.makeText(this@MainActivity, errorMessage, Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -141,6 +158,10 @@ class MainActivity : AppCompatActivity() {
 
         btnVerRegistros.setOnClickListener {
             startActivity(Intent(this, ListaRegistrosActivity::class.java))
+        }
+
+        btnResumenExtras.setOnClickListener {
+            mostrarResumenExtras()
         }
     }
 
@@ -256,6 +277,38 @@ class MainActivity : AppCompatActivity() {
             fecha.dayOfWeek == DayOfWeek.SATURDAY
         } else {
             fecha.dayOfWeek == DayOfWeek.SUNDAY
+        }
+    }
+
+    private fun mostrarResumenExtras() {
+        val progressDialog = android.app.ProgressDialog(this)
+        progressDialog.setMessage("Cargando resumen...")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val registros = RetrofitClient.apiService.getRegistros()
+                val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
+                val franco = prefs.getString("franco", "Domingo") ?: "Domingo"
+                val resumen = calcularResumen(registros, franco)
+
+                withContext(Dispatchers.Main) {
+                    progressDialog.dismiss()
+                    mostrarResumen(
+                        this@MainActivity,
+                        resumen.totalSemana,
+                        resumen.extraSemana,
+                        resumen.totalMes,
+                        resumen.extraMes
+                    )
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    progressDialog.dismiss()
+                    Toast.makeText(this@MainActivity, "Error al obtener registros: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 

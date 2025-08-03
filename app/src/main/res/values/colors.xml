@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color> <!-- Blanco explícito -->
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Colores principales del logo -->
+    <color name="primary">#2196F3</color> <!-- Azul principal -->
+    <color name="primary_dark">#1976D2</color> <!-- Azul oscuro -->
+    <color name="primary_light">#E3F2FD</color> <!-- Azul claro -->
+    <color name="accent">#4CAF50</color> <!-- Verde para acumulación -->
+    <color name="accent_secondary">#FF9800</color> <!-- Naranja para eficiencia -->
+    
+    <!-- Colores de fondo -->
+    <color name="background_primary">#FFFFFF</color>
+    <color name="background_secondary">#F5F5F5</color>
+    <color name="background_tertiary">#E8EAF6</color>
+    
+    <!-- Colores de texto -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#BDBDBD</color>
+    
+    <!-- Colores de estado -->
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#F44336</color>
+    <color name="info">#2196F3</color>
+    
+    <!-- Colores legacy (mantener compatibilidad) -->
     <color name="pastel">#B9F6CA</color>
-    <color name="azulCarrefour">#0070BA</color> <!-- Color institucional Carrefour -->
+    <color name="azulCarrefour">#0070BA</color>
     <color name="rojoCarrefour">#E30613</color>
-
-    <!-- Opcionales para textos y estados -->
     <color name="grayLight">#D3D3D3</color>
     <color name="grayDark">#616161</color>
     <color name="errorColor">#B00020</color>
     
     <!-- Colores para modo oscuro -->
-    <color name="darkBackground">#FF121212</color> <!-- Fondo oscuro -->
-    <color name="lightGray">#B3FFFFFF</color> <!-- Gris claro para hints en modo oscuro -->
+    <color name="darkBackground">#FF121212</color>
+    <color name="lightGray">#B3FFFFFF</color>
 </resources>

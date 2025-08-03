@@ -12,9 +12,9 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        app:title="Contador de horas"
-        app:titleTextColor="@android:color/black"
+        android:background="@color/primary"
+        app:title="TimeTracker Pro"
+        app:titleTextColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -64,7 +64,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:text="Guardar"
-        android:backgroundTint="@color/rojoCarrefour"
+        android:backgroundTint="@color/primary"
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/etHoras"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,9 +77,23 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:text="Ver registros guardados"
-        android:backgroundTint="@color/rojoCarrefour"
+        android:backgroundTint="@color/primary"
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/btnEnviar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botón Resumen de Horas Extras -->
+    <Button
+        android:id="@+id/btnResumenExtras"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="📊 Ver Resumen de Horas Extras"
+        android:backgroundTint="@color/accent"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btnVerRegistros"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />

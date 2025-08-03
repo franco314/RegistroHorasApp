@@ -3,21 +3,27 @@
     <!-- Tema base de la app - SIEMPRE modo claro -->
     <style name="Theme.RegistroHorasApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Color primario principal -->
-        <item name="colorPrimary">@color/rojoCarrefour</item>
+        <item name="colorPrimary">@color/primary</item>
         <!-- Variante para estados más oscuros (botones presionados, etc.) -->
-        <item name="colorPrimaryVariant">@color/azulCarrefour</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
         <!-- Color del texto/iconos sobre colorPrimary -->
-        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Color secundario para elementos de acento -->
-        <item name="colorSecondary">@color/rojoCarrefour</item>
+        <item name="colorSecondary">@color/accent</item>
         <!-- Fondo de la ventana -->
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@color/background_primary</item>
         <!-- Color del texto principal (sobre fondo blanco) -->
-        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
         <!-- Color para botones y controles secundarios -->
-        <item name="colorSecondaryVariant">@color/pastel</item>
+        <item name="colorSecondaryVariant">@color/accent_secondary</item>
         <!-- Color de hint para EditText -->
-        <item name="android:textColorHint">@color/grayDark</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <!-- Color de superficie para cards y elementos elevados -->
+        <item name="colorSurface">@color/background_primary</item>
+        <!-- Color de error -->
+        <item name="colorError">@color/error</item>
+        <!-- Color de texto sobre superficie -->
+        <item name="colorOnSurface">@color/text_primary</item>
     </style>
 
 </resources>

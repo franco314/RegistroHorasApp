@@ -65,7 +65,16 @@ class ListaRegistrosActivity : ComponentActivity() {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     progressBar.visibility = View.GONE
-                    Toast.makeText(this@ListaRegistrosActivity, "Error al cargar registros: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                    val errorMessage = when {
+                        e.message?.contains("Failed to connect") == true -> 
+                            "Error de conexión. Verifica tu conexión a internet."
+                        e.message?.contains("timeout") == true -> 
+                            "Tiempo de espera agotado. Intenta nuevamente."
+                        e.message?.contains("Unable to resolve host") == true -> 
+                            "No se puede conectar al servidor. Verifica la configuración."
+                        else -> "Error al cargar registros: ${e.localizedMessage}"
+                    }
+                    Toast.makeText(this@ListaRegistrosActivity, errorMessage, Toast.LENGTH_LONG).show()
                 }
             }
         }
