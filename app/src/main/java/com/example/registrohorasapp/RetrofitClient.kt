@@ -14,11 +14,11 @@ object RetrofitClient {
     // URLs configurables - Cambia aquí cuando despliegues en la nube
     private const val BASE_URL_LOCAL = "http://192.168.0.4:8000/api/"
     private const val BASE_URL_PRODUCTION = "https://tu-app.herokuapp.com/api/" // Cambia por tu URL real
-    private const val BASE_URL_RAILWAY = "https://tu-app.up.railway.app/api/" // Cambia por tu URL real
+    private const val BASE_URL_RAILWAY = "https://web-production-85ac.up.railway.app/api/" // Cambia por tu URL real
     private const val BASE_URL_RENDER = "https://tu-app.onrender.com/api/" // Cambia por tu URL real
     
     // Cambia esta variable para cambiar entre entornos
-    private const val CURRENT_ENVIRONMENT = "PRODUCTION" // LOCAL, PRODUCTION, RAILWAY, RENDER
+    private const val CURRENT_ENVIRONMENT = "RAILWAY" // LOCAL, PRODUCTION, RAILWAY, RENDER
     
     private val BASE_URL: String
         get() = when (CURRENT_ENVIRONMENT) {
